@@ -61,7 +61,7 @@ class KoBARTConditionalGeneration(L.LightningModule):
                           attention_mask=attention_mask,
                           decoder_input_ids=inputs['decoder_input_ids'],
                           decoder_attention_mask=decoder_attention_mask,
-                          labels=inputs['labels'], return_dict=True)
+                          labels=inputs['labels'].to(torch.int64), return_dict=True)
 
     def training_step(self, batch, batch_idx):
         outs = self(batch)

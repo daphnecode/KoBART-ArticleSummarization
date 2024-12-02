@@ -100,5 +100,11 @@ if __name__ == '__main__':
                         callbacks=[checkpoint_callback],
                         logger=wandb_logger
                         )
+
+    #추가사항
+    checkpoint_path = "YourModelPath.ckpt"
+    checkpoint = torch.load(checkpoint_path)
+    model.load_state_dict(checkpoint['state_dict'])
+    #추가사항
     
     trainer.fit(model, dm)
